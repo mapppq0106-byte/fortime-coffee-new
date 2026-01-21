@@ -1,0 +1,21 @@
+<div class="container home-content">
+    {{!-- <h2 class="section-title">Sách Mới Nhất</h2> --}}
+    <div class="book-grid">
+        {{#each books}}
+        <div class="book-card">
+            <div class="book-image">
+                <img src="/img/{{this.image_url}}" alt="{{this.title}}">
+            </div>
+            <div class="book-info">
+                <h3 class="book-title">{{this.title}}</h3>
+                <p class="book-author">Tác giả: <span>{{this.author}}</span></p>
+                <p class="book-desc">{{this.description}}</p>
+                <div class="book-footer">
+                    {{!-- <p class="book-price">{{this.price}} VNĐ</p> --}}
+                    <button class="btn-read">Đọc ngay</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

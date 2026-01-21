@@ -1,0 +1,18 @@
+<header class="main-header">
+    <nav class="navbar container">
+        <div class="logo">
+            <a href="/">BOOK<span>STORE</span></a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/" class="nav-item">Sản phẩm</a></li>
+            {{#if user}}
+                <li class="user-info">Chào, <strong>{{user.name}}</strong></li>
+                <li><a href="/logout" class="nav-btn logout">Đăng xuất</a></li>
+            {{else}}
+                <li><a href="/login" class="nav-item">Đăng nhập</a></li>
+                <li><a href="/register" class="nav-btn signup">Đăng ký</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+</header>
