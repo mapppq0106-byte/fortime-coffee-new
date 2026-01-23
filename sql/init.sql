@@ -1,17 +1,25 @@
 CREATE DATABASE IF NOT EXISTS book_store;
 USE book_store;
 
+-- Bảng sách
 CREATE TABLE IF NOT EXISTS books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    author VARCHAR(100),
+    author VARCHAR(255),
     description TEXT,
     image_url VARCHAR(255),
     price DECIMAL(10, 2)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
-INSERT INTO books (title, author, description, image_url) VALUES 
-('5 Múi Giờ, 10 Tiếng Bay', 'Nhật Ký Yêu Xa', 'Câu chuyện về tình yêu xa đầy cảm xúc.', 'book1.jpg'),
-('Gói Nỗi Buồn Lại Và Ném Đi', 'An Nhiên', 'Cuốn sách giúp bạn vượt qua những ngày khó khăn.', 'book2.jpg'),
-('Hẹn Nhau Ở Một Cuộc Đời Khác', 'Gari', 'Những tản văn nhẹ nhàng về cuộc sống.', 'book3.jpg',),
-('Chạng Vạng', 'Tsuko', 'Ma cà rồng trong bóng tối.', 'book4.jpg');
+-- Dữ liệu mẫu (Lưu ý: image_url chỉ cần tên file)
+INSERT INTO books (title, author, description, image_url, price) VALUES 
+('Lập trình Node.js', 'TG Alpha', 'Sách hướng dẫn Node.js từ cơ bản đến nâng cao.', 'book1.jpg', 150000),
+('Mastering Express', 'TG Beta', 'Xây dựng ứng dụng web mạnh mẽ với Express.', 'book2.jpg', 200000);
+
+-- Bảng người dùng
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);

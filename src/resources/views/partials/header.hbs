@@ -1,18 +1,20 @@
-<header class="main-header">
-    <nav class="navbar container">
+<header>
+    <div class="header-container">
         <div class="logo">
-            <a href="/">BOOK<span>STORE</span></a>
+            <a href="/">BOOK STORE</a>
         </div>
 
-        <ul class="nav-links">
-            <li><a href="/" class="nav-item">Sản phẩm</a></li>
-            {{#if user}}
-                <li class="user-info">Chào, <strong>{{user.name}}</strong></li>
-                <li><a href="/logout" class="nav-btn logout">Đăng xuất</a></li>
-            {{else}}
-                <li><a href="/login" class="nav-item">Đăng nhập</a></li>
-                <li><a href="/register" class="nav-btn signup">Đăng ký</a></li>
-            {{/if}}
-        </ul>
-    </nav>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="#">Sách</a></li>
+                <li><a href="#">Thể Loại</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="/login" class="btn-login-nav">Đăng nhập</a>
+            <a href="/signup" class="btn-signup-nav">Đăng ký</a>
+        </div>
+    </div>
 </header>
