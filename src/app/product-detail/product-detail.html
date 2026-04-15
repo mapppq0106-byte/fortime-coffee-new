@@ -1,0 +1,110 @@
+<div class="product-detail-container shadow-sm" *ngIf="product">
+  <div class="product-main-info card border-0 p-4 mb-4">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="main-image-wrapper position-relative">
+           <img [src]="selectedImage" class="img-fluid main-image mb-3" alt="Product">
+           <div class="voucher-tag-orange">4.4 VOUCHER XTRA</div>
+        </div>
+        <div class="d-flex gap-2">
+          <img *ngFor="let img of selectedVariant.images" [src]="img" 
+               (click)="selectedImage = img" 
+               class="img-thumbnail" 
+               [class.active-thumb]="selectedImage === img"
+               style="width: 80px; cursor: pointer;">
+        </div>
+        <div class="share-section mt-3 d-flex align-items-center">
+          <span class="me-2 small">Chia sẻ:</span>
+          <i class="bi bi-messenger text-primary mx-1"></i>
+          <i class="bi bi-facebook text-info mx-1"></i>
+          <i class="bi bi-pinterest text-danger mx-1"></i>
+          <span class="ms-auto small"><i class="bi bi-heart text-danger me-1"></i> Đã thích (2,8k)</span>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <h1 class="product-title">
+          <span class="badge-shopee">Yêu thích</span> {{product.name}}
+        </h1>
+
+        <div class="d-flex align-items-center mb-3 small">
+          <span class="text-danger border-bottom border-danger me-2">{{product.rating}}</span>
+          <div class="text-danger me-3">★★★★★</div>
+          <div class="border-start ps-3 me-3">{{product.reviews}} Đánh Giá</div>
+        </div>
+
+        <div class="price-box">
+          <span class="old-price">₫{{selectedVariant.oldPrice | number}}</span>
+          <span class="current-price">₫{{getCurrentPrice() | number}}</span>
+          <span class="badge bg-danger ms-2">44% GIẢM</span>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+          <span class="label">PHÂN LOẠI</span>
+          <div class="d-flex flex-wrap">
+            <button *ngFor="let v of product.variants" 
+                    class="variant-btn" 
+                    [class.active]="selectedVariant === v"
+                    (click)="selectVariant(v)">
+              {{v.colorName}}
+            </button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+          <span class="label">KÍCH CỠ</span>
+          <div class="d-flex flex-wrap">
+            <button *ngFor="let s of selectedVariant.sizes" 
+                    class="size-btn" 
+                    [class.active]="selectedSizeObj === s"
+                    (click)="selectSize(s)">
+              {{s.size}}
+            </button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-4">
+          <span class="label">SỐ LƯỢNG</span>
+          <div class="input-group" style="width: 120px;">
+            <button class="btn btn-outline-secondary" (click)="updateQuantity(-1)">-</button>
+            <input type="text" class="form-control text-center" [(ngModel)]="quantity">
+            <button class="btn btn-outline-secondary" (click)="updateQuantity(1)">+</button>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-add-cart" (click)="onAddToCart()">
+            <i class="bi bi-cart-plus me-2"></i>Thêm Vào Giỏ Hàng
+          </button>
+          <button class="btn btn-buy-now">Mua Ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-info-section card border-0 p-4">
+    <h3 class="section-header mb-4">CHI TIẾT SẢN PHẨM</h3>
+    
+    <div class="info-row d-flex mb-3">
+      <div class="info-label text-muted">Danh Mục</div>
+      <div class="info-value text-primary ps-4">{{product.category}}</div>
+    </div>
+    
+    <div class="info-row d-flex mb-3">
+      <div class="info-label text-muted">Loại bảo hành</div>
+      <div class="info-value ps-4">{{product.warranty}}</div>
+    </div>
+    
+    <div class="info-row d-flex mb-3">
+      <div class="info-label text-muted">Gửi từ</div>
+      <div class="info-value ps-4">{{product.from}}</div>
+    </div>
+
+    <h3 class="section-header mt-5 mb-4">MÔ TẢ SẢN PHẨM</h3>
+    <div class="description-content">
+      <p style="white-space: pre-line; line-height: 1.8;">
+        {{product.description}}
+      </p>
+    </div>
+  </div>
+</div>
